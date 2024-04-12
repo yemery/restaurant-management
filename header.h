@@ -9,6 +9,7 @@ class Item
 {
     template <class V, class I>
     friend optional<V> find(vector<V>, I);
+    friend class Order;
 
 protected:
     int id;

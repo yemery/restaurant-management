@@ -1,6 +1,7 @@
 #include "method.cpp"
 
-int main() {
+int main()
+{
     // Dish d1("Dish1", "Dish1 description", 10.0);
     // Dish d2("Dish1", "Dish1 description", 10.0);
     // Drink dr1("Drink1", "Drink1 description", 5);
@@ -12,9 +13,11 @@ int main() {
     Menu m;
     m.addToMenu();
     m.addToMenu();
-    // m.display();
+    m.display();
     Order o;
     o.addItem(m);
+    o.addItem(m);
+    o.caculateSum();
     // Client c("Client1", "Client1 address", "Client1 phone");
     // // c.reserve();
 

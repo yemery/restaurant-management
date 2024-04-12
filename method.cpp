@@ -168,6 +168,18 @@ void Order::addItem(Menu &m)
     auto findItem = find(m.items, id);
     if (findItem.has_value())
     {
-        findItem.value()->display();
+        itemsList.push_back(findItem.value());
     }
+}
+void Order::caculateSum()
+{
+
+    // check later wether the itemsList is empty or not
+    double total = 0;
+    for (auto &i : itemsList)
+    {
+        // cout << i->price << endl;
+        total += i->price;
+    }
+    cout << "The total price of the order is: " << total << endl;
 }
