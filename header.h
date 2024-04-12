@@ -2,33 +2,35 @@
 #include <vector>
 using namespace std;
 
-// thinkin about adding abstract class Item
-
-
-class Dish
+// we implemented this abstract class not to have a conflict in the ids of dishes and drinks while having a search
+class Item
 {
-private:
+protected:
     int id;
     string name, description;
     double price;
 
 public:
     static int idd;
+    Item();
+    Item(string, string, double);
+    Item(Item &);
+    virtual void display() = 0;
+    // ~Item();
+};
+
+class Dish : public Item
+{
+public:
     Dish();
     Dish(string, string, double);
     Dish(Dish &);
     void display();
 };
 
-class Drink
+class Drink : public Item
 {
-private:
-    int id;
-    string name, description;
-    double price;
-
 public:
-    static int idd;
     Drink();
     Drink(string, string, double);
     Drink(Drink &);
@@ -36,8 +38,6 @@ public:
 };
 
 // we will add display items method by id for the menu
-
-
 
 class Reservation
 {
@@ -84,8 +84,10 @@ class Menu
     friend class Order;
 
 private:
-    vector<Dish *> dishes;
-    vector<Drink *> drinks;
+    // vector<Dish *> dishes;
+    // vector<Drink *> drinks;
+    vector<Item *> items;
+    
 
 public:
     // void addDish();
@@ -102,6 +104,6 @@ private:
 
 public:
     void addDish(Menu &);
-    void addDrink(Menu&);
+    void addDrink(Menu &);
     void caculateSum();
 };

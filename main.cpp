@@ -12,13 +12,13 @@ int main() {
     Menu m;
     m.addToMenu();
     m.addToMenu();
-    // m.display();
-    Client c("Client1", "Client1 address", "Client1 phone");
-    // c.reserve();
+    m.display();
+    // Client c("Client1", "Client1 address", "Client1 phone");
+    // // c.reserve();
 
-    c.display();
+    // c.display();
 
-    Order o;
-    o.addDish(m);
+    // Order o;
+    // o.addDish(m);
     return 0;
 }
