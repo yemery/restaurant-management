@@ -1,21 +1,25 @@
 #include "header.h"
 
-Dish::Dish() : name(""), description(""), price(0){};
-Dish::Dish(string n, string d, double p) : name(n), description(d), price(p) {}
+int Dish::idd = 0;
+Dish::Dish() : name(""), description(""), price(0) ,id(Dish::idd++){};
+Dish::Dish(string n, string d, double p) : name(n), description(d), price(p),id(Dish::idd ++) {}
 Dish::Dish(Dish &d) : name(d.name), description(d.description), price(d.price) {}
 
 void Dish::display()
 {
+    cout << "Dish ID: " << id << endl;
     cout << "Dish Name: " << name << endl;
     cout << "Dish Description: " << description << endl;
     cout << "Dish Price: " << price << endl;
 }
 
-Drink::Drink(string n, string d, double p) : name(n), description(d), price(p) {}
-Drink::Drink() : name(""), description(""), price(0.0) {}
+int Drink::idd = 0;
+Drink::Drink(string n, string d, double p) : name(n), description(d), price(p),id(Drink::idd++) {}
+Drink::Drink() : name(""), description(""), price(0.0),id(Drink::idd++) {}
 Drink::Drink(Drink &d) : name(d.name), description(d.description), price(d.price) {}
 void Drink::display()
 {
+    cout << "Drink ID: " << id << endl;
     cout << "Drink name: " << name << endl;
     cout << "Drink Description: " << description << endl;
     cout << "Drink Price: " << price << endl;
@@ -28,6 +32,7 @@ void Drink::display()
 // we tot abouri2 and radi ngolo lih 3lach andiro a 1 methode f menu li tajouti dish o drink
 void Menu::addToMenu()
 {
+    cout << "-----------Add an item to the menu: ------------------" << endl;
     char choice;
     do
     {
@@ -67,9 +72,9 @@ void Menu::display()
         drinks[i]->display();
     }
 }
-
-Reservation::Reservation() : date(""), hour(""), nbPeople(0), status(0){};
-Reservation::Reservation(string d, string h, int nb, int s) : date(d), hour(h), nbPeople(nb), status(s) {}
+int Reservation::idd = 0;
+Reservation::Reservation() : date(""), hour(""), nbPeople(0), status(0),id(Reservation::idd++){};
+Reservation::Reservation(string d, string h, int nb, int s) : date(d), hour(h), nbPeople(nb), status(s) ,id(Reservation::idd++){}
 Reservation::Reservation(Reservation &r) : date(r.date), hour(r.hour), nbPeople(r.nbPeople), status(r.status) {}
 //  1 for waiting 2 canceled 3 confirmed
 void Reservation::confirm()
@@ -82,17 +87,19 @@ void Reservation::cancel()
 }
 void Reservation::display()
 {
+    cout << "Reservation ID: " << id << endl;
     cout << "Reservation Date: " << date << endl;
     cout << "Reservation Hour: " << hour << endl;
     cout << "Number of people: " << nbPeople << endl;
     cout << "Reservation Status: " << status << endl;
 }
-
-Client::Client() : firstName(""), lastName(""), phoneNumber("") {}
-Client::Client(Client &c) : firstName(c.firstName), lastName(c.lastName), phoneNumber(c.phoneNumber) {}
+int Client::idd = 0;
+Client::Client() : firstName(""), lastName(""), phoneNumber(""),id(Client::idd ++) {}
+Client::Client(Client &c) : firstName(c.firstName), lastName(c.lastName), phoneNumber(c.phoneNumber),id(Client::idd ++) {}
 Client::Client(string f, string l, string p) : firstName(f), lastName(l), phoneNumber(p) {}
 void Client::reserve()
 {
+    cout << "Reserve a table: " << endl;
     string date, hour;
     int nbPeople, status;
     cout << "Enter the date of the reservation: ";
@@ -109,6 +116,7 @@ void Client::reserve()
 
 void Client::display()
 {
+    cout << "Client ID: " << id << endl;
     cout << "Client First Name: " << firstName << endl;
     cout << "Client Last Name: " << lastName << endl;
     cout << "Client Phone Number: " << phoneNumber << endl;
@@ -117,4 +125,21 @@ void Client::display()
     {
         reservations[i]->display();
     }
+}
+
+void Order::addDish(Menu& m){
+    cout << "-----------Add a dish to the command: ------------------" << endl;
+    cout << "Enter the ID of the dish you want to add: ";
+    int id;
+    cin >> id;
+    cout << id << endl;
+    // check if the dish exists
+    // for (int i = 0; i < dishes.size(); i++)
+    // {
+    //     if(dishes[i]->idd == id);
+    // }
+    m.display();
+    
+
+    
 }
