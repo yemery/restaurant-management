@@ -1,5 +1,4 @@
 #include "header.h"
-
 int Item::idd = 0;
 
 Item::Item() : name(""), description(""), price(0), id(Item::idd++){};
@@ -80,7 +79,6 @@ void Menu::display()
     for (auto &i : items)
     {
         i->display();
-
     }
     // for (auto &i : items)
     // {
@@ -152,9 +150,11 @@ void Client::display()
     }
 }
 
-void Order::addDish(Menu &m)
+// void Order::addDish(Menu &m)
+void Order::addItem(Menu &m)
 {
     cout << "-----------Add a dish to the command: ------------------" << endl;
+
     cout << "Enter the ID of the dish you want to add: ";
     int id;
     cin >> id;
@@ -164,5 +164,10 @@ void Order::addDish(Menu &m)
     // {
     //     if(dishes[i]->idd == id);
     // }
-    m.display();
+
+    auto findItem = find(m.items, id);
+    if (findItem.has_value())
+    {
+        findItem.value()->display();
+    }
 }

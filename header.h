@@ -1,10 +1,15 @@
+#pragma once
 #include <iostream>
 #include <vector>
 using namespace std;
+#include "utils.cpp"
 
 // we implemented this abstract class not to have a conflict in the ids of dishes and drinks while having a search
 class Item
 {
+    template <class V, class I>
+    friend optional<V> find(vector<V>, I);
+
 protected:
     int id;
     string name, description;
@@ -87,7 +92,6 @@ private:
     // vector<Dish *> dishes;
     // vector<Drink *> drinks;
     vector<Item *> items;
-    
 
 public:
     // void addDish();
@@ -99,11 +103,13 @@ public:
 class Order
 {
 private:
-    vector<Dish *> dishes_list;
-    vector<Drink *> drinks_list;
+    // vector<Dish *> dishes_list;
+    // vector<Drink *> drinks_list;
+    vector<Item *> itemsList;
 
 public:
-    void addDish(Menu &);
-    void addDrink(Menu &);
+    // void addDish(Menu &);
+    // void addDrink(Menu &);
+    void addItem(Menu &);
     void caculateSum();
 };
