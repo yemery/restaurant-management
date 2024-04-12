@@ -6,7 +6,11 @@ int main() {
     d1.display();
     dr1.display();
     Menu m;
-    m.addToMenu();
-    m.display();
+    // m.addToMenu();
+    // m.display();
+    Client c("Client1", "Client1 address", "Client1 phone");
+    c.reserve();
+
+    c.display();
     return 0;
 }
