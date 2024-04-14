@@ -34,3 +34,8 @@ void Menu::display()
         i->display();
     }
 }
+
+vector<Item *> Menu::getMenuItems()
+{
+    return menuItems;
+}

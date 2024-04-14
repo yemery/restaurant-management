@@ -23,6 +23,7 @@ public:
     Item();
     Item(string, string, double);
     Item(Item &);
+    int getId();    
     virtual void display() = 0;
     // ~Item();
 };

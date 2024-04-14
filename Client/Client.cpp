@@ -3,7 +3,7 @@
 
 int Client::idd = 0;
 Client::Client() : firstName(""), lastName(""), phoneNumber(""), id(Client::idd++) {}
-Client::Client(Client &c) : firstName(c.firstName), lastName(c.lastName), phoneNumber(c.phoneNumber), id(Client::idd++) {}
+Client::Client(Client &c) : firstName(c.firstName), lastName(c.lastName), phoneNumber(c.phoneNumber), id(c.id) {}
 Client::Client(string f, string l, string p) : firstName(f), lastName(l), phoneNumber(p),id(Client::idd++) {}
 void Client::display()
 {
@@ -37,4 +37,9 @@ void addClient(){
 
     clients.push_back(new Client(firstName, lastName, phoneNumber));
     cout << "Client added successfully!" << endl;
+}
+
+int Client::getId()
+{
+    return id;
 }

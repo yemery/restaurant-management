@@ -11,3 +11,7 @@ double Item::getPrice()
 {
     return price;
 }   
+int Item::getId()
+{
+    return id;
+}

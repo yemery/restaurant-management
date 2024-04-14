@@ -20,6 +20,7 @@ public:
     Client(Client &);
     Client(string, string, string);
     // ~Client();
+    int getId();  
     void display();
 };
 vector<Client *> clients;

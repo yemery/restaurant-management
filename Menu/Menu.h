@@ -8,11 +8,13 @@ using namespace std;
 
 class Menu
 {
+        // friend void addItemsOrder(Menu&);
+
 private:
     vector<Item*> menuItems;
 public:
     void addItems();
-
+    vector<Item*> getMenuItems();
     
     void display();
     
