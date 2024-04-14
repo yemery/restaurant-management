@@ -1,18 +1,34 @@
 # Restaurant Management System
 
-## Overview
-This project, for the academic year 2023/2024, involves the creation of a Restaurant Management System using Object-Oriented Programming. The system is designed to handle various aspects of restaurant management, including taking orders, managing the menu, tracking stocks, and handling reservations.
+This repository contains a simple restaurant management system implemented in C++. The system allows for managing clients, menus, reservations, and orders.
 
-### Project Details
-- **Course**: Object-Oriented Programming
-- **Class**: 3IIR-G16
+## Features
 
-## Tasks
+- **Client Management**: Add new clients and display existing clients.
+- **Menu Management**: Add items to the menu and display the menu.
+- **Reservation Management**: Reserve tables, display reservations, confirm reservations, and cancel reservations.
+- **Order Management**: Add orders, display orders, calculate sum per order, and get reservations by client ID.
 
-1. Design the classes and their relationships to implement the restaurant management system as described above.
-2. Implement the necessary methods to add dishes and beverages to the menu.
-3. Write functions to manage table reservations.
-4. Implement features to take orders and calculate the total order amount.
-5. Implement stock management by updating ingredient quantities available after each order.
-6. ...
+## Getting Started
+
+To run the program, you need a C++ compiler installed on your system. You can compile and run the program using the following steps:
+
+1. Clone this repository to your local machine.
+2. Navigate to the root directory of the repository.
+3. Compile the source code using a C++ compiler.
+
+## Usage
+
+After running the program, you will be presented with a menu where you can choose different options based on the management task you want to perform.
+
+### Menu Options
+
+1. **Client Menu**: Manage clients by adding new clients or displaying existing clients.
+2. **Menu Menu**: Manage the restaurant menu by adding items or displaying the menu.
+3. **Reservation Menu**: Manage table reservations by reserving tables, displaying reservations, confirming reservations, or canceling reservations.
+4. **Order Menu**: Manage orders by adding items, displaying orders, calculating sums, and getting reservations by client ID.
+5. **Exit**: Exit the program.
+
+
+
 
