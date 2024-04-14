@@ -1,5 +1,8 @@
 #include "Order.h"
 
+int Order::idd = 0;
+Order::Order() : id(Order::idd++){};
+
 void addItemsOrder(Menu &m)
 {
     cout << "-----------Add items to the order: ------------------" << endl;
@@ -52,10 +55,13 @@ void addItemsOrder(Menu &m)
 
 void Order::display()
 {
+    cout << "Order ID: " << id << endl;
     for (Item *i : orderItems)
     {
         i->display();
     }
+    cout << "Client Information:" << endl;
+    client->display();
 }
 
 void displayOrders()
@@ -108,4 +114,15 @@ void Order::setOrderItems(Item &i)
     orderItems.push_back(&i);
 }
 
-// need to add calc
+void calculateSumById()
+{
+    int id;
+
+    cout << "Enter the id of the order you want to calculate the sum: ";
+    cin >> id;
+    auto foundOrder = find(orders, id);
+    if (foundOrder.has_value())
+    {
+        foundOrder.value()->caculateSum();
+    }
+}

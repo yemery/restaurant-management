@@ -4,17 +4,24 @@
 #include "../Item/Item.cpp"
 #include "../Menu/Menu.h"
 #include "../Client/Client.cpp"
+#include "../utils.cpp"
+
 using namespace std;
 
 class Order
 {
     // friend void addItemsOrder(Menu&);
+    template <class V, class I>
+    friend optional<V> find(vector<V>, I);
+
     friend void SumPerOrder();
 private:
     vector<Item *> orderItems;
     Client* client;
+    int id;
 public:
-    // ~Order();
+    static int idd;
+    Order();
     void display();
     void caculateSum();
     Client& getClient();
