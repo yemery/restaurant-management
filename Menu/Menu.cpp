@@ -1,40 +1,8 @@
 #include "Menu.h"
-void Menu::display()
-{
-    // checking lkhwa d array before displaying it
-    // cout << "Dishes: " << endl;
-    // for (int i = 0; i < dishes.size(); i++)
-    // {
-    //     dishes[i]->display();
-    // }
-    // cout << "Drinks: " << endl;
-    // for (int i = 0; i < drinks.size(); i++)
-    // {
-    //     drinks[i]->display();
-    // }
 
-    for (auto &i : items)
-    {
-        i->display();
-    }
-    // for (auto &i : items)
-    // {
-
-    //     // get typo of an obj by using typeid
-    //     // if (typeid(*i) == typeid(Dish))
-    //     // {
-    //     //     cout << "Dish" << endl;
-    //     // }
-    //     // else
-    //     // {
-    //     //     cout << "Drink" << endl;
-    //     // }
-    //     i->display();
-    // }
-}
-void Menu::addToMenu()
+void Menu::addItems()
 {
-    cout << "-----------Add an item to the menu: ------------------" << endl;
+    cout << "-----------Add items to the menu: ------------------" << endl;
     char choice;
     do
     {
@@ -42,7 +10,7 @@ void Menu::addToMenu()
         cin >> choice;
 
     } while (choice != '1' && choice != '2');
-    cout << choice << endl;
+    // cout << choice << endl;
 
     string name, description;
     double price;
@@ -56,7 +24,13 @@ void Menu::addToMenu()
 
     cout << name << " " << description << " " << price << endl;
 
-    // choice == '1' ? dishes.push_back(new Dish(name, description, price)) : drinks.push_back(new Drink(name, description, price));
-    choice == '1' ? items.push_back(new Dish(name, description, price)) : items.push_back(new Drink(name, description, price));
-    cout << "Item added successfully!" << endl;
+    choice == '1' ? menuItems.push_back(new Dish(name, description, price)) : menuItems.push_back(new Drink(name, description, price));
+}
+
+void Menu::display()
+{
+    for (auto &i : menuItems)
+    {
+        i->display();
+    }
 }

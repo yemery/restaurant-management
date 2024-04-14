@@ -1,22 +1,22 @@
 #pragma once
 #include <iostream>
+using namespace std;
 #include <vector>
-#include "../Item/Item.h"
-#include "../Dish/Dish.h"   
-#include "../Drink/Drink.h"
+#include "../Item/Item.cpp"
+#include "../Dish/Dish.cpp"   
+#include "../Drink/Drink.cpp"
 
 class Menu
 {
-    friend class Order;
-
 private:
-    // vector<Dish *> dishes;
-    // vector<Drink *> drinks;
-    vector<Item *> items;
-
+    vector<Item*> menuItems;
 public:
-    // void addDish();
-    // void addDrink();
-    void addToMenu();
+    void addItems();
+
+    
     void display();
+    
+    // ~Menu();
 };
+
+

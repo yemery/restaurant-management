@@ -20,7 +20,6 @@ public:
     Reservation();
     Reservation(Client *, string, string, int, int);
     Reservation(Reservation &);
-    void reserve();
     void display();
     int getId();
     int getStatus();
