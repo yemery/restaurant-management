@@ -127,11 +127,11 @@ void calculateSumById()
     }
 }
 
-void clientReservationsById()
+void clientOrdersById()
 {
     int id;
 
-    cout << "Enter the client id to display the reservations:";
+    cout << "Enter the client id to display the Orders:";
     cin >> id;
     auto foundClient = find(clients, id);
     if (foundClient.has_value())

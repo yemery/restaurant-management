@@ -18,6 +18,11 @@ int Reservation::getId()
     return id;
 }
 
+Client *Reservation::getClient()
+{
+    return client;
+}
+
 //  1 for waiting 2 canceled 3 confirmed
 void confirmReservation()
 {
@@ -69,14 +74,13 @@ void cancelReservation()
     }
 }
 
-
 void Reservation::display()
 {
     cout << "Reservation ID: " << id << endl;
     cout << "Reservation Date: " << date << endl;
     cout << "Reservation Hour: " << hour << endl;
     cout << "Number of people: " << nbPeople << endl;
-    cout << "Reservation Status: " ;
+    cout << "Reservation Status: ";
     if (status == 1)
     {
         cout << "Waiting" << endl;
@@ -85,11 +89,11 @@ void Reservation::display()
     {
         cout << "Canceled" << endl;
     }
-    else 
+    else
     {
         cout << "Confirmed" << endl;
     }
-   
+
     cout << "Client Information:" << endl;
     client->display();
 }
@@ -131,5 +135,27 @@ void displayReservations()
     for (auto r : reservations)
     {
         r->display();
+    }
+}
+
+void clientReservationById()
+{
+    cout << "Enter the client id to display the reservations:";
+    int id;
+    cin >> id;
+    auto foundClient = find(clients, id);
+    if (!foundClient.has_value())
+    {
+        cout << "Invalid client id" << endl;
+    }
+    else
+    {
+        for (Reservation *i : reservations)
+        {
+            if (i->getClient()->getId() == id)
+            {
+                i->display();
+            }
+        }
     }
 }

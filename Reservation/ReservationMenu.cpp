@@ -1,7 +1,6 @@
 #include "Reservation.cpp"
 #include <stdlib.h>
 
-
 void ReservationMenu()
 {
     int choice;
@@ -15,7 +14,8 @@ void ReservationMenu()
         cout << "2. Display Reservations" << endl;
         cout << "3. Confirm Reservation" << endl;
         cout << "4. Cancel Reservation" << endl;
-        cout << "5. Exit" << endl;
+        cout << "5. Get reservation by ID" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice)
@@ -31,6 +31,12 @@ void ReservationMenu()
             break;
         case 4:
             cancelReservation();
+            break;
+        case 5:
+            clientReservationById();
+            break;
+        case 6:
+            exit = true;
             break;
         default:
             cout << "Invalid choice" << endl;

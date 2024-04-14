@@ -7,7 +7,7 @@ int main()
     int choice;
     bool exit = false;
     Menu m;
-    
+
     do
     {
         system("CLS");
@@ -43,6 +43,6 @@ int main()
 
     // need to add calculate sum by id and get reservation by idnd commands by id
     // stock managemet after asking khouna
-    
+
     return 0;
 }

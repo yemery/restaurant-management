@@ -24,7 +24,7 @@ public:
     int getId();
     int getStatus();
     void setStatus(int);
-
+    Client* getClient();
     // ~Reservation();
 };
 vector<Reservation *> reservations;
