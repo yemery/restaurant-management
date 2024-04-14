@@ -13,7 +13,8 @@ void OrderMenu(Menu &m)
         cout << "2. Display Orders" << endl;
         cout << "3. Sum per Order" << endl;
         cout << "4. Calculate Sum by Order ID" << endl;
-        cout << "5. Exit" << endl;
+        cout << "5. Reservation of a client" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice)
@@ -29,7 +30,11 @@ void OrderMenu(Menu &m)
             break;
         case 4:
             calculateSumById();
+            break;
         case 5:
+            clientReservationsById();
+            break;
+        case 6:
             exit = true;
             break;
         default:

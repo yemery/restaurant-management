@@ -24,10 +24,11 @@ public:
     Order();
     void display();
     void caculateSum();
-    Client& getClient();
+    Client* getClient();
     vector<Item *> getOrderItems();
     void setClient(Client* c);
     void setOrderItems(Item&);
+    
 };
 
 vector<Order *> orders;

@@ -10,27 +10,29 @@ void addItemsOrder(Menu &m)
 
     bool exist = false;
     Order *o = new Order(); // Step 2: Dynamically allocate memory
-    // add multiple additions
+                            // add multiple additions
+    cout << "Enter ID of the client: ";
+    cin >> idClient;
+    bool check = false;
+    for (Client *i : clients)
+    {
+        if (i->getId() == idClient)
+        {
+            o->setClient(i);
+            cout << "Client added to the order" << endl;
+            check = true;
+            break;
+        }
+      
+    }
+    if (!check)
+    {
+        cout << "Client not found" << endl;
+        return;
+    }
 
     do
     {
-        cout << "Enter ID of the client: ";
-        cin >> idClient;
-        for (Client *i : clients)
-        {
-            if (i->getId() == idClient)
-            {
-                o->setClient(i);
-                cout << "Client added to the order" << endl;
-                break;
-            }
-            else
-            {
-                cout << "Client not found" << endl;
-                // delete o; // Step 3: Deallocate memory
-                // return;
-            }
-        }
 
         cout << "Enter the id of the item you want to add:";
         cin >> id;
@@ -69,7 +71,6 @@ void displayOrders()
     cout << "-----------Display the order: ------------------" << endl;
     for (Order *i : orders)
     {
-        cout << "Order: " << endl;
         i->display();
     }
 }
@@ -89,15 +90,14 @@ void SumPerOrder()
     cout << "-----------Calculate the sum of the orders: ------------------" << endl;
     for (auto &i : orders)
     {
-        cout << "Order: " << endl;
         i->display();
         i->caculateSum();
     }
 }
 
-Client &Order::getClient()
+Client *Order::getClient()
 {
-    return *client;
+    return client;
 }
 
 vector<Item *> Order::getOrderItems()
@@ -124,5 +124,24 @@ void calculateSumById()
     if (foundOrder.has_value())
     {
         foundOrder.value()->caculateSum();
+    }
+}
+
+void clientReservationsById()
+{
+    int id;
+
+    cout << "Enter the client id to display the reservations:";
+    cin >> id;
+    auto foundClient = find(clients, id);
+    if (foundClient.has_value())
+    {
+        for (Order *i : orders)
+        {
+            if (i->getClient()->getId() == id)
+            {
+                i->display();
+            }
+        }
     }
 }
