@@ -1,116 +1,91 @@
-#pragma once
-#include <iostream>
-#include <vector>
-using namespace std;
-#include "utils.cpp"
+// #pragma once
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+// #include "utils.cpp"
 
-// we implemented this abstract class not to have a conflict in the ids of dishes and drinks while having a search
-class Item
-{
-    template <class V, class I>
-    friend optional<V> find(vector<V>, I);
-    friend class Order;
 
-protected:
-    int id;
-    string name, description;
-    double price;
 
-public:
-    static int idd;
-    Item();
-    Item(string, string, double);
-    Item(Item &);
-    virtual void display() = 0;
-    // ~Item();
-};
 
-class Dish : public Item
-{
-public:
-    Dish();
-    Dish(string, string, double);
-    Dish(Dish &);
-    void display();
-};
 
-class Drink : public Item
-{
-public:
-    Drink();
-    Drink(string, string, double);
-    Drink(Drink &);
-    void display();
-};
 
-// we will add display items method by id for the menu
 
-class Reservation
-{
-private:
-    int id;
-    string date, hour;
-    int nbPeople, status = 1;
+// // we will add display items method by id for the menu
 
-public:
-    static int idd;
-    Reservation();
-    Reservation(string, string, int, int);
-    Reservation(Reservation &);
+// class Reservation
+// {
+// private:
+//     int id;
+//     string date, hour;
+//     int nbPeople, status = 1;
+//     Client client;
 
-    void confirm();
-    void cancel();
-    void display();
+// public:
+//     static int idd;
+//     Reservation();
+//     Reservation(Client &, string, string, int, int);
+//     Reservation(Reservation &);
+//     void reserve();
 
-    // ~Reservation();
-};
+//     void confirm();
+//     void cancel();
+//     void display();
 
-// anzido l client vector dialo bach n3rfou list d clients
+//     // ~Reservation();
+// };
 
-class Client
-{
-private:
-    int id;
-    string firstName, lastName, phoneNumber;
-    vector<Reservation *> reservations;
+// // anzido l client vector dialo bach n3rfou list d clients
 
-public:
-    static int idd;
-    Client();
-    Client(Client &);
-    Client(string, string, string);
-    // ~Client();
+// class Client
+// {
+//     template <class V, class I>
+//     friend optional<V> find(vector<V>, I);
 
-    void reserve();
-    void cancelReserve();
-    void display();
-};
-class Menu
-{
-    friend class Order;
+// private:
+//     int id;
+//     string firstName, lastName, phoneNumber;
+//     // vector<Reservation *> reservations;
 
-private:
-    // vector<Dish *> dishes;
-    // vector<Drink *> drinks;
-    vector<Item *> items;
+// public:
+//     static int idd;
+//     Client();
+//     Client(Client &);
+//     Client(string, string, string);
+//     // ~Client();
+//     void cancelReserve();
+//     void display();
+// };
 
-public:
-    // void addDish();
-    // void addDrink();
-    void addToMenu();
-    void display();
-};
+// class Menu
+// {
+//     friend class Order;
 
-class Order
-{
-private:
-    // vector<Dish *> dishes_list;
-    // vector<Drink *> drinks_list;
-    vector<Item *> itemsList;
+// private:
+//     // vector<Dish *> dishes;
+//     // vector<Drink *> drinks;
+//     vector<Item *> items;
 
-public:
-    // void addDish(Menu &);
-    // void addDrink(Menu &);
-    void addItem(Menu &);
-    void caculateSum();
-};
+// public:
+//     // void addDish();
+//     // void addDrink();
+//     void addToMenu();
+//     void display();
+// };
+
+// class Order
+// {
+// private:
+//     // vector<Dish *> dishes_list;
+//     // vector<Drink *> drinks_list;
+//     vector<Item *> itemsList;
+
+// public:
+//     // void addDish(Menu &);
+//     // void addDrink(Menu &);
+//     void addItem(Menu &);
+//     void caculateSum();
+// };
+
+// vector<Client *> clients;
+// vector<Reservation *> reservations;
+// vector<Order *> order;

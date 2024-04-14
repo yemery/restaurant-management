@@ -1,32 +1,9 @@
 #include "header.h"
-int Item::idd = 0;
 
-Item::Item() : name(""), description(""), price(0), id(Item::idd++){};
-Item::Item(string n, string d, double p) : name(n), description(d), price(p), id(Item::idd++){};
-Item::Item(Item &i) : name(i.name), description(i.description), price(i.price), id(Item::idd++){};
 
-Dish::Dish() : Item(){};
-Dish::Dish(string n, string d, double p) : Item(n, d, p) {}
-Dish::Dish(Dish &d) : Item(d) {}
 
-void Dish::display()
-{
-    cout << "Dish ID: " << id << endl;
-    cout << "Dish Name: " << name << endl;
-    cout << "Dish Description: " << description << endl;
-    cout << "Dish Price: " << price << endl;
-}
 
-Drink::Drink() : Item() {}
-Drink::Drink(string n, string d, double p) : Item(n, d, p) {}
-Drink::Drink(Drink &d) : Item(d) {}
-void Drink::display()
-{
-    cout << "Drink ID: " << id << endl;
-    cout << "Drink name: " << name << endl;
-    cout << "Drink Description: " << description << endl;
-    cout << "Drink Price: " << price << endl;
-}
+
 
 // void Menu::addDish(Dish& d){
 //     dishes.push_back(d);
@@ -96,9 +73,9 @@ void Menu::display()
     // }
 }
 int Reservation::idd = 0;
-Reservation::Reservation() : date(""), hour(""), nbPeople(0), status(0), id(Reservation::idd++){};
-Reservation::Reservation(string d, string h, int nb, int s) : date(d), hour(h), nbPeople(nb), status(s), id(Reservation::idd++) {}
-Reservation::Reservation(Reservation &r) : date(r.date), hour(r.hour), nbPeople(r.nbPeople), status(r.status) {}
+Reservation::Reservation() : date(""), hour(""), nbPeople(0), status(0), id(Reservation::idd++), client(){};
+Reservation::Reservation(Client &c, string d, string h, int nb, int s) : date(d), hour(h), nbPeople(nb), status(s), id(Reservation::idd++), client(c) {}
+Reservation::Reservation(Reservation &r) : date(r.date), hour(r.hour), nbPeople(r.nbPeople), status(r.status), client(r.client) {}
 //  1 for waiting 2 canceled 3 confirmed
 void Reservation::confirm()
 {
@@ -120,21 +97,36 @@ int Client::idd = 0;
 Client::Client() : firstName(""), lastName(""), phoneNumber(""), id(Client::idd++) {}
 Client::Client(Client &c) : firstName(c.firstName), lastName(c.lastName), phoneNumber(c.phoneNumber), id(Client::idd++) {}
 Client::Client(string f, string l, string p) : firstName(f), lastName(l), phoneNumber(p) {}
-void Client::reserve()
+
+
+
+void Reservation::reserve()
 {
     cout << "Reserve a table: " << endl;
-    string date, hour;
-    int nbPeople, status;
-    cout << "Enter the date of the reservation: ";
-    cin >> date;
-    cout << "Enter the hour of the reservation: ";
-    cin >> hour;
-    cout << "Enter the number of people: ";
-    cin >> nbPeople;
-    cout << "Enter the status of the reservation: ";
-    cin >> status;
-    reservations.push_back(new Reservation(date, hour, nbPeople, status));
-    cout << "Reservation added successfully!" << endl;
+    cout << "Give ID of client: ";
+    int id;
+    cin >> id;
+
+    auto client = find(clients, id);
+    if (!client.has_value())
+    {
+        cout << "Invalid client id" << endl;
+    }
+    else
+    {
+        string date, hour;
+        int nbPeople, status;
+        cout << "Enter the date of the reservation: ";
+        cin >> date;
+        cout << "Enter the hour of the reservation: ";
+        cin >> hour;
+        cout << "Enter the number of people: ";
+        cin >> nbPeople;
+        cout << "Enter the status of the reservation: ";
+        cin >> status;
+        reservations.push_back(new Reservation(*client.value(), date, hour, nbPeople, status));
+        cout << "Reservation added successfully!" << endl;
+    }
 }
 
 void Client::display()

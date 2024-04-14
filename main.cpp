@@ -1,29 +1,40 @@
-#include "method.cpp"
+#include "Client/ClientMenu.cpp"
+#include "Reservation/ReservationMenu.cpp"
 
 int main()
 {
-    // Dish d1("Dish1", "Dish1 description", 10.0);
-    // Dish d2("Dish1", "Dish1 description", 10.0);
-    // Drink dr1("Drink1", "Drink1 description", 5);
-    // Drink dr2("Drink1", "Drink1 description", 5);
-    // d1.display();
-    // d2.display();
-    // dr1.display();
-    // dr2.display();
-    Menu m;
-    m.addToMenu();
-    m.addToMenu();
-    m.display();
-    Order o;
-    o.addItem(m);
-    o.addItem(m);
-    o.caculateSum();
-    // Client c("Client1", "Client1 address", "Client1 phone");
-    // // c.reserve();
+    int choice;
+    bool exit = false;
+    do
+    {
+        system("CLS");
 
-    // c.display();
+        cout << "1. Client Menu" << endl;
+        cout << "2. Item Menu" << endl;
+        cout << "3. Reservation Menu" << endl;
+        cout << "4. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            ClientMenu();
+            break;
+        case 2:
+            // ItemMenu();
+            break;
+        case 3:
+            ReservationMenu();
+            break;
+        // case 4:
+        //     exit = true;
+        //     break;
+        default:
 
-    // Order o;
-    // o.addDish(m);
+            return 0;
+        }
+    } while (exit == false);
+
+
     return 0;
 }
