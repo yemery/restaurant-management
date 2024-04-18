@@ -15,7 +15,7 @@ int main()
         cout << "1. Client Menu" << endl;
         cout << "2. Menu Menu" << endl;
         cout << "3. Reservation Menu" << endl;
-        cout << "4. Order " << endl;
+        cout << "4. Order Menu" << endl;
         cout << "5. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;

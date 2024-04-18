@@ -24,10 +24,12 @@ void ClientMenu()
         case 2:
             displayClients();
             break;
-
+        case 4:
+            exit = true;
+            break;  
         default:
             cout << "Invalid choice" << endl;
-            return;
+            return ;
         }
         cout << "Do you want to continue? yes (0) no (1): ";
         cin >> exit;
