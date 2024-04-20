@@ -3,6 +3,7 @@
 
 void MenuMenu(Menu &m, Inventory& i)
 {
+    // un menu pour gérer les items du menu (ajouter un item, afficher les items)
     int choice;
     bool exit = false;
     do

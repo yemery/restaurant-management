@@ -1,8 +1,11 @@
 #include "Drink.h"
 
+// Constructeurs de la classe Drink (par default , paramétré et par copie)
 Drink::Drink() : Item() {}
 Drink::Drink(string n, string d, double p) : Item(n, d, p) {}
 Drink::Drink(Drink &d) : Item(d) {}
+
+// une methode pour afficher les infromations du boisson
 void Drink::display()
 {
     cout << "Drink ID: " << id << endl;

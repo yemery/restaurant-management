@@ -3,14 +3,14 @@
 using namespace std;
 #include <vector>
 #include "../utils.cpp"
-// #include "../Order/Order.h"
 
-// we implemented this abstract class not to have a conflict in the ids of dishes and drinks while having a search
+// classe abstraite Item qui contient les attributs communs entre les plats et les boissons
+// elle est utiliée pour éviter les conflits d'identifiants entre les plats et les boissons
 class Item
 {
+    // pour utiliser une template dans le fichier utils.cpp on a utilisé friend pour qu'elle puisse accéder aux attributs privés de la classe
     template <class V, class I>
     friend optional<V> find(vector<V>, I);
-    // friend class Order;
 
 protected:
     int id;
@@ -25,5 +25,4 @@ public:
     Item(Item &);
     int getId();    
     virtual void display() = 0;
-    // ~Item();
 };

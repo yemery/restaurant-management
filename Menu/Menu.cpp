@@ -1,5 +1,6 @@
 #include "Menu.h"
 
+// méthode pour ajouter des items au menu
 void Menu::addItems(Inventory &i)
 {
     cout << "-----------Add items to the menu: ------------------" << endl;
@@ -10,7 +11,6 @@ void Menu::addItems(Inventory &i)
         cin >> choice;
 
     } while (choice != '1' && choice != '2');
-    // cout << choice << endl;
 
     string name, description;
     double price;
@@ -19,21 +19,22 @@ void Menu::addItems(Inventory &i)
     cout << "Enter the description of the item: ";
     cin >> description;
     cout << "Enter the price of the item: ";
-    //  add regex for cin attr
     cin >> price;
 
     cout << name << " " << description << " " << price << endl;
 
+    // on ajoute l'item au menu selon le choix de l'utilisateur, si c'est un plat ou une boisson
     choice == '1' ? menuItems.push_back(new Dish(name, description, price)) : menuItems.push_back(new Drink(name, description, price));
 
-    // cin << "ingrediant qty:"
+    // on ajoute l'item à l'inventaire, on demande à l'utilisateur de saisir la quantité de l'item 
     int quantity;
     cout << "Enter the quantity of item of the add it in inventory: ";
     cin >> quantity;
-    // set it to inventory vector
+    // on ajoute l'item à l'inventaire
     i.setItemsIngerediant(new Ingrediant(quantity, menuItems.back()));
 }
 
+// méthode pour afficher les items du menu
 void Menu::display()
 {
     for (auto &i : menuItems)
@@ -42,6 +43,7 @@ void Menu::display()
     }
 }
 
+// getter pour retourner les items du menu
 vector<Item *> Menu::getMenuItems()
 {
     return menuItems;

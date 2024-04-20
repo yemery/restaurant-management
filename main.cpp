@@ -47,8 +47,5 @@ int main()
         }
     } while (exit == false);
 
-    // need to add calculate sum by id and get reservation by idnd commands by id
-    // stock managemet after asking khouna
-
     return 0;
 }

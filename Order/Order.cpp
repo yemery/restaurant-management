@@ -1,50 +1,61 @@
 #include "Order.h"
 
+// Inialisation de l'attribut statique idd de la classe Order à 0
 int Order::idd = 0;
+
+// Constructeur de la classe Order
 Order::Order() : id(Order::idd++){};
 
+// fonction pour ajouter des items à la commande
 void addItemsOrder(Menu &m)
+// on passe en paramètre un objet de type Menu pour pouvoir accéder aux items du menu sans perdre la cohérence des données et éviter plusieurs instances de la classe Menu qui est declarée dans le main
 {
     cout << "-----------Add items to the order: ------------------" << endl;
     int id, idClient;
 
     bool exist = false;
-    Order *o = new Order(); // Step 2: Dynamically allocate memory
-                            // add multiple additions
+
+    // instanciation dynamique d'un objet de type Order
+    Order *o = new Order();
     cout << "Enter ID of the client: ";
     cin >> idClient;
+
+    // on vérifie si le client existe dans le vecteur clients pour l'ajouter à la commande
     bool check = false;
     for (Client *i : clients)
     {
         if (i->getId() == idClient)
         {
+            // affectation du client à la commande
             o->setClient(i);
             cout << "Client added to the order" << endl;
+            // s'il existe on sort de la boucle et on change la valeur de la variable check à true
             check = true;
             break;
         }
-      
     }
+    // si le client n'existe pas on affiche un message d'erreur et on sort de l'ajout des items à la commande vers le menu client
     if (!check)
     {
         cout << "Client not found" << endl;
         return;
     }
 
+    // boucle pour ajouter des items à la commande
     do
     {
 
         cout << "Enter the id of the item you want to add:";
         cin >> id;
-
+        // on vérifie si l'item existe dans le menu pour l'ajouter à la commande
         for (Item *i : m.getMenuItems())
         {
             if (i->getId() == id)
             {
-                // 1- check inventory of the item 2- add the item to the order
-                
+                // affectation de l'item à la commande
                 o->setOrderItems(*i);
                 cout << "Item added to the order" << endl;
+                // ajout de la commande au vecteur orders
                 orders.push_back(o);
                 break;
             }
@@ -52,97 +63,128 @@ void addItemsOrder(Menu &m)
 
         cout << "Do you want to add more items? yes (0) no (1): ";
         cin >> exist;
+        // la variable exist pour vérifier si l'utilisateur veut ajouter plus d'items à la même commande
     } while (exist == false);
-
-   
 }
 
+// méthode pour afficher une commande avec les items et les informations du client
 void Order::display()
 {
     cout << "Order ID: " << id << endl;
     for (Item *i : orderItems)
     {
+        // on affiche les items de la commande  en utilisant virtual display() et les pointeurs pour afficher les informations de l'item qui dépend du type de l'item (Dish ou Drink)
         i->display();
     }
     cout << "Client Information:" << endl;
+    // on affiche les informations du client en utilisant la méthode display() de la classe Client
     client->display();
 }
 
+// fonction pour afficher les commandes du vecteur orders
 void displayOrders()
 {
     cout << "-----------Display the order: ------------------" << endl;
     for (Order *i : orders)
     {
+        // on affiche les commandes en utilisant la méthode display() de la classe Order
         i->display();
     }
 }
 
+// méthode pour calculer le total de la commande
 void Order::caculateSum()
 {
     double sum = 0;
+    // on utilise la méthode getPrice() de la classe Item pour accéder au prix de chaque item de la commande
     for (auto &i : orderItems)
     {
+        // on incrémente la somme par le prix de chaque item
         sum += i->getPrice();
     }
+    // on affiche la somme totale de la commande
     cout << "The total sum of the order is: " << sum << endl;
 }
 
+// fonction pour l'affichage de chaque commande dans le vecteur orders avec son total
 void SumPerOrder()
 {
     for (auto &i : orders)
     {
+        // on utilise les méthodes display() et caculateSum() de la classe Order pour afficher et calculer le total de chaque commande
         i->display();
         i->caculateSum();
     }
 }
 
+// getter pour accéder au client de la commande
 Client *Order::getClient()
 {
     return client;
 }
 
+// getter pour accéder aux items de la commande
 vector<Item *> Order::getOrderItems()
 {
     return orderItems;
 }
 
+// setter pour modifier le client de la commande
 void Order::setClient(Client *c)
 {
     client = c;
 }
+
+// setter pour ajouter des items à la commande
 void Order::setOrderItems(Item &i)
 {
     orderItems.push_back(&i);
 }
 
+// fonction pour afficher le total d'une commande en demandant son ID
 void calculateSumById()
 {
     int id;
 
     cout << "Enter the id of the order you want to calculate the sum: ";
     cin >> id;
+    // on utilise la fonction find() pour trouver la commande dans le vecteur orders
     auto foundOrder = find(orders, id);
+    // si la commande existe on utilise la méthode caculateSum() de la classe Order pour calculer le total de la commande, sinon on affiche un message d'erreur
     if (foundOrder.has_value())
     {
         foundOrder.value()->caculateSum();
     }
+    else
+    {
+        cout << "Order not found" << endl;
+    }
 }
 
+// fonction pour afficher les commandes d'un client en demandant son ID
 void clientOrdersById()
 {
     int id;
 
     cout << "Enter the client id to display the Orders:";
     cin >> id;
+
+    // on utilise la fonction find() pour trouver le client dans le vecteur clients
     auto foundClient = find(clients, id);
+    // si le client existe on affiche les commandes du client, sinon on affiche un message d'erreur
     if (foundClient.has_value())
     {
         for (Order *i : orders)
         {
+            // on vérifie si le client de la commande est le client qu'on cherche , on  utilise les methodes getId() de la classe Client et getClient() de la classe Order pour accéder à l'ID du client et au client de la commande
             if (i->getClient()->getId() == id)
             {
                 i->display();
             }
         }
+    }
+    else
+    {
+        cout << "Client not found" << endl;
     }
 }
