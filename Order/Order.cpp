@@ -89,7 +89,6 @@ void Order::caculateSum()
 
 void SumPerOrder()
 {
-    cout << "-----------Calculate the sum of the orders: ------------------" << endl;
     for (auto &i : orders)
     {
         i->display();

@@ -13,7 +13,7 @@ void ClientMenu()
         cout << "-------------- Client Management --------------" << endl;
         cout << "1. Add Client" << endl;
         cout << "2. Display Clients" << endl;
-        cout << "4. Exit" << endl;
+        cout << "3. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice)
@@ -24,12 +24,12 @@ void ClientMenu()
         case 2:
             displayClients();
             break;
-        case 4:
+        case 3:
             exit = true;
-            break;  
+            break;
         default:
             cout << "Invalid choice" << endl;
-            return ;
+            return;
         }
         cout << "Do you want to continue in Client Menu ? yes (0) no (1):  ";
         cin >> exit;

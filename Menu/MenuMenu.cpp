@@ -9,8 +9,8 @@ void MenuMenu(Menu &m, Inventory& i)
     {
         system("CLS");
 
-        cout << "1. Add items to the menu" << endl;
-        cout << "2. Display the menu" << endl;
+        cout << "1. Add items to the Menu" << endl;
+        cout << "2. Display the Menu" << endl;
         cout << "3. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;

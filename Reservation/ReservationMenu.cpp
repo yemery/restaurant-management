@@ -14,7 +14,7 @@ void ReservationMenu()
         cout << "2. Display Reservations" << endl;
         cout << "3. Confirm Reservation" << endl;
         cout << "4. Cancel Reservation" << endl;
-        cout << "5. Get reservation by ID" << endl;
+        cout << "5. Get reservation by client ID" << endl;
         cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;

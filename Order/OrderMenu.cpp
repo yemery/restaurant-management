@@ -11,9 +11,9 @@ void OrderMenu(Menu &m)
 
         cout << "1. Add Order" << endl;
         cout << "2. Display Orders" << endl;
-        cout << "3. Sum per Order" << endl;
+        cout << "3. Calculate the sum of the Orders" << endl;
         cout << "4. Calculate Sum by Order ID" << endl;
-        cout << "5. Orders of a client" << endl;
+        cout << "5. List Orders of a Client" << endl;
         cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
