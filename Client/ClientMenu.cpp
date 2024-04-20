@@ -31,7 +31,7 @@ void ClientMenu()
             cout << "Invalid choice" << endl;
             return ;
         }
-        cout << "Do you want to continue? yes (0) no (1): ";
+        cout << "Do you want to continue in Client Menu ? yes (0) no (1):  ";
         cin >> exit;
     } while (exit == false);
 }
