@@ -1,7 +1,7 @@
 #include "Menu.cpp"
 #include <stdlib.h>
 
-void MenuMenu(Menu &m)
+void MenuMenu(Menu &m, Inventory& i)
 {
     int choice;
     bool exit = false;
@@ -17,7 +17,7 @@ void MenuMenu(Menu &m)
         switch (choice)
         {
         case 1:
-            m.addItems();
+            m.addItems(i);
             break;
         case 2:
             m.display();

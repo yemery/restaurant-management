@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-void Menu::addItems()
+void Menu::addItems(Inventory &i)
 {
     cout << "-----------Add items to the menu: ------------------" << endl;
     char choice;
@@ -25,6 +25,13 @@ void Menu::addItems()
     cout << name << " " << description << " " << price << endl;
 
     choice == '1' ? menuItems.push_back(new Dish(name, description, price)) : menuItems.push_back(new Drink(name, description, price));
+
+    // cin << "ingrediant qty:"
+    int quantity;
+    cout << "Enter the quantity of item of the add it in inventory: ";
+    cin >> quantity;
+    // set it to inventory vector
+    i.setItemsIngerediant(new Ingrediant(quantity, menuItems.back()));
 }
 
 void Menu::display()

@@ -1,6 +1,6 @@
 #include "Inventory.cpp"
 
-void InventoryMenu(Menu &m,Inventory &i)
+void InventoryMenu(Inventory &i)
 {
     int choice;
     bool exit = false;
@@ -19,7 +19,7 @@ void InventoryMenu(Menu &m,Inventory &i)
         switch (choice)
         {
         case 1:
-            i.addItems(m);
+            // i.addItems(m);
             break;
         case 2:
             i.displayItems();
@@ -39,7 +39,7 @@ void InventoryMenu(Menu &m,Inventory &i)
         default:
             return;
         }
-        cout << "Do you want to continue? yes (0) no (1): ";
+        cout << "Do you want to continue ? yes (0) no (1): ";
         cin >> exit;
     } while (exit == false);
 }

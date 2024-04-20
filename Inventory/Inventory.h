@@ -21,8 +21,9 @@ private:
 public:
     // Inventory();
     void display();
-    void addItems(Menu&);
+    // void addItems(Menu&);
     void updateItems();
     void displayItems();
+    void setItemsIngerediant(Ingrediant*);
     // ~Inventory();
 };

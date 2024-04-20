@@ -27,7 +27,7 @@ int main()
             ClientMenu();
             break;
         case 2:
-            MenuMenu(m);
+            MenuMenu(m, i);
             break;
         case 3:
             ReservationMenu();
@@ -37,7 +37,7 @@ int main()
             break;
 
         case 5:
-            InventoryMenu(m, i);
+            InventoryMenu(i);
             break;
         case 6:
             exit = true;
