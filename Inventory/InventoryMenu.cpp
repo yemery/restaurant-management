@@ -2,6 +2,8 @@
 
 void InventoryMenu(Inventory &i)
 {
+    // menu de gestion de l'inventaire (afficher les items, mettre à jour les items)
+
     int choice;
     bool exit = false;
 
@@ -13,7 +15,9 @@ void InventoryMenu(Inventory &i)
         cout << "2. Update Inventory" << endl;
         cout << "3. Exit" << endl;
         cout << "Enter your choice: ";
+        // on demande à l'utilisateur de choisir une option
         cin >> choice;
+
         switch (choice)
         {
 

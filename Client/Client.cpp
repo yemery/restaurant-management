@@ -1,7 +1,7 @@
 #pragma once
 #include "Client.h"
 
-// Initialisation de l'ID à 0 , on a un vecteurr de pointeurs de type Client pour stocker les clients, chaque client a un ID unique 
+// Initialisation de l'ID à 0 , on a un vecteurr de pointeurs de type Client pour stocker les clients, chaque client a un ID unique
 int Client::idd = 0;
 
 // Différents Constructeurs (par default , paramétré et par copie)
@@ -21,9 +21,18 @@ void Client::display()
 // une fonction pour afficher la liste des clients dans le vecteur clients en utilisant la methode display pour afficher un seul client et forrange pour itterater le vecteur
 void displayClients()
 {
-    for (Client* c : clients)
+
+    // si le vecteur clients est vide on affiche un message
+    if (clients.size() == 0)
     {
-        c->display();
+        cout << "No clients registered on the system" << endl;
+    }
+    else
+    {
+        for (Client *c : clients)
+        {
+            c->display();
+        }
     }
 }
 

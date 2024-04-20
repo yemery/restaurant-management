@@ -7,7 +7,7 @@ int Order::idd = 0;
 Order::Order() : id(Order::idd++){};
 
 // fonction pour ajouter des items à la commande
-void addItemsOrder(Menu &m)
+void addItemsOrder(Menu &m, Inventory &inv)
 // on passe en paramètre un objet de type Menu pour pouvoir accéder aux items du menu sans perdre la cohérence des données et éviter plusieurs instances de la classe Menu qui est declarée dans le main
 {
     cout << "-----------Add items to the order: ------------------" << endl;
@@ -44,41 +44,85 @@ void addItemsOrder(Menu &m)
     // boucle pour ajouter des items à la commande
     do
     {
-
         cout << "Enter the id of the item you want to add:";
         cin >> id;
         // on vérifie si l'item existe dans le menu pour l'ajouter à la commande
+
         for (Item *i : m.getMenuItems())
         {
             if (i->getId() == id)
             {
-                // affectation de l'item à la commande
-                o->setOrderItems(*i);
-                cout << "Item added to the order" << endl;
-                // ajout de la commande au vecteur orders
-                orders.push_back(o);
+                // check pour vérifier si l'item est un plat ou une boisson dans l'invetaire
+                for (Ingrediant *ing : inv.getItemsIngrediant())
+                {
+                    if (ing->getItemId() == id)
+                    {
+                        // on vérifie si la quantité de l'item est égale à 0 pour afficher un message d'erreur
+                        if (ing->getQuantity() <= 0)
+                        {
+                            cout << "Item not available" << endl;
+                            // continue;
+                        }
+                        else
+                        {
+                            // si la quantité de l'item est supérieure à 0 on l'ajoute à la commande
+                            // on utilise la méthode setOrderItems() de la classe Order pour ajouter l'item à la commande
+                            o->setOrderItems(*i);
+                            // on utilise la méthode setQuantity() de la classe Ingrediant pour soustraire la quantité de l'item de l'inventaire
+                            ing->setQuantity(-1);
+                            break;
+                        }
+                    }
+                }
+
                 break;
             }
+            else
+            {
+                cout << "Item not found" << endl;
+            }
         }
+        // on demande à l'utilisateur s'il veut ajouter plus d'items à la commande
 
         cout << "Do you want to add more items? yes (0) no (1): ";
         cin >> exist;
         // la variable exist pour vérifier si l'utilisateur veut ajouter plus d'items à la même commande
     } while (exist == false);
+
+    // on vérifie si la commande contient des items avant de l'ajouter au vecteur orders
+    if (o->getOrderItems().size() != 0)
+    {
+        // ajout de la commande au vecteur orders
+        orders.push_back(o);
+        cout << "Order added successfully" << endl;
+    }
+    else
+    {
+        // si la commande ne contient pas d'items on affiche un message d'erreur
+        cout << "No items added to the order, order cancelled" << endl;
+    }
 }
 
 // méthode pour afficher une commande avec les items et les informations du client
 void Order::display()
 {
-    cout << "Order ID: " << id << endl;
-    for (Item *i : orderItems)
+
+    if (orderItems.size() == 0)
     {
-        // on affiche les items de la commande  en utilisant virtual display() et les pointeurs pour afficher les informations de l'item qui dépend du type de l'item (Dish ou Drink)
-        i->display();
+        cout << "No orders registered on the system" << endl;
     }
-    cout << "Client Information:" << endl;
-    // on affiche les informations du client en utilisant la méthode display() de la classe Client
-    client->display();
+    else
+    {
+        cout << "Order ID: " << id << endl;
+        for (Item *i : orderItems)
+        {
+            // on affiche les items de la commande  en utilisant virtual display() et les pointeurs pour afficher les informations de l'item qui dépend du type de l'item (Dish ou Drink)
+            i->display();
+        }
+        cout << "Client Information:" << endl;
+        // on affiche les informations du client en utilisant la méthode display() de la classe Client
+        client->display();
+    }
 }
 
 // fonction pour afficher les commandes du vecteur orders

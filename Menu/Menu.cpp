@@ -21,15 +21,18 @@ void Menu::addItems(Inventory &i)
     cout << "Enter the price of the item: ";
     cin >> price;
 
-    cout << name << " " << description << " " << price << endl;
-
     // on ajoute l'item au menu selon le choix de l'utilisateur, si c'est un plat ou une boisson
     choice == '1' ? menuItems.push_back(new Dish(name, description, price)) : menuItems.push_back(new Drink(name, description, price));
 
-    // on ajoute l'item à l'inventaire, on demande à l'utilisateur de saisir la quantité de l'item 
+    // on ajoute l'item à l'inventaire, on demande à l'utilisateur de saisir la quantité de l'item
     int quantity;
-    cout << "Enter the quantity of item of the add it in inventory: ";
-    cin >> quantity;
+    // on vérifie si la quantité est supérieure à 0 pour ajouter l'item à l'inventaire sinon on demande à l'utilisateur de saisir une quantité valide
+    do
+    {
+        cout << "Enter the quantity of item of the add it in inventory: ";
+        cin >> quantity;
+    } while (quantity < 0);
+
     // on ajoute l'item à l'inventaire
     i.setItemsIngerediant(new Ingrediant(quantity, menuItems.back()));
 }

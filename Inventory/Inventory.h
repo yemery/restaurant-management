@@ -8,23 +8,21 @@
 #include "../Item/Item.cpp"
 #include "../utils.cpp"
 using namespace std;
-
+// classe Inventory pour gérer les items  et leurs quantités
 class Inventory
 {
+    // fonction amie pour trouver un item dans l'inventaire par son id pour accéder aux attributs privés de la classe
     template <class V, class I>
     friend optional<V> find(vector<V>, I);
-
+    
 private:
-    // vector<Item*> items;
     vector<Ingrediant *> itemsIngrediant;
 
 public:
-    // Inventory();
     void display();
-    // void addItems(Menu&);
     void updateItems();
     void displayItems();
     void setItemsIngerediant(Ingrediant*);
-    // ~Inventory();
+    vector<Ingrediant *> getItemsIngrediant();
 };
 

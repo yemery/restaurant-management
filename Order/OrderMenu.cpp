@@ -1,6 +1,6 @@
 #include "Order.cpp"
 
-void OrderMenu(Menu &m)
+void OrderMenu(Menu &m,Inventory &i)
 {
     // un menu pour gérer les commandes (ajouter une commande, afficher les commandes, calculer le total des commandes, calculer le total par ID de commande, lister les commandes d'un client)
     
@@ -21,7 +21,7 @@ void OrderMenu(Menu &m)
         switch (choice)
         {
         case 1:
-            addItemsOrder(m);
+            addItemsOrder(m,i);
             break;
         case 2:
             displayOrders();

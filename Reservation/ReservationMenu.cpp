@@ -3,6 +3,7 @@
 
 void ReservationMenu()
 {
+    // menu de gestion des réservations (réserver une table, afficher les réservations, confirmer une réservation, annuler une réservation)
     int choice;
     bool exit = false;
     do
