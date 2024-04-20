@@ -9,14 +9,14 @@ class Ingrediant
 private:
     int quantity;
     Item *item;
+
 public:
     Ingrediant();
     Ingrediant(int quantity, Item *item);
     Ingrediant(Ingrediant &);
     int getQuantity();
     void setQuantity(int);
-    void display() ;
+    void display();
+    int getItemId();
     // ~Ingrediant();
 };
-
-

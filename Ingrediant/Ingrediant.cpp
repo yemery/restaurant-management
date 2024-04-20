@@ -6,7 +6,7 @@ Ingrediant::Ingrediant(Ingrediant &i) : quantity(i.quantity), item(i.item) {}
 
 void Ingrediant::setQuantity(int q)
 {
-    quantity = q;
+    quantity += q;
 }
 int Ingrediant::getQuantity()
 {
@@ -16,5 +16,10 @@ int Ingrediant::getQuantity()
 void Ingrediant::display()
 {
     item->display();
-    cout << " Quantity: " << quantity << endl;
+    cout << "Quantity: " << quantity << endl;
+}
+
+int Ingrediant::getItemId()
+{
+    return item->getId();
 }

@@ -2,12 +2,13 @@
 #include "Reservation/ReservationMenu.cpp"
 #include "Menu/MenuMenu.cpp"
 #include "Order/OrderMenu.cpp"
+#include "Inventory/InventoryMenu.cpp"
 int main()
 {
     int choice;
     bool exit = false;
     Menu m;
-
+    Inventory i;
     do
     {
         system("CLS");
@@ -16,7 +17,8 @@ int main()
         cout << "2. Menu Menu" << endl;
         cout << "3. Reservation Menu" << endl;
         cout << "4. Order Menu" << endl;
-        cout << "5. Exit" << endl;
+        cout << "5. Inventory Menu" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         switch (choice)
@@ -33,7 +35,11 @@ int main()
         case 4:
             OrderMenu(m);
             break;
+
         case 5:
+            InventoryMenu(m, i);
+            break;
+        case 6:
             exit = true;
             break;
         default:

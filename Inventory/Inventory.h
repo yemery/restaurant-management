@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include "../Item/Item.h"
-#include "../Ingrediant/Ingrediant.h"
+#include "../Ingrediant/Ingrediant.cpp"
+#include "../Menu/Menu.h"
 #include "../Item/Item.cpp"
-// #include "../utils.cpp"
+#include "../utils.cpp"
 using namespace std;
 
 class Inventory
@@ -19,7 +21,8 @@ private:
 public:
     // Inventory();
     void display();
-    void addItems();
+    void addItems(Menu&);
     void updateItems();
+    void displayItems();
     // ~Inventory();
 };

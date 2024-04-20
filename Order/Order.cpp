@@ -41,6 +41,8 @@ void addItemsOrder(Menu &m)
         {
             if (i->getId() == id)
             {
+                // 1- check inventory of the item 2- add the item to the order
+                
                 o->setOrderItems(*i);
                 cout << "Item added to the order" << endl;
                 orders.push_back(o);
@@ -52,7 +54,7 @@ void addItemsOrder(Menu &m)
         cin >> exist;
     } while (exist == false);
 
-    // delete o; // Step 3: Deallocate memory
+   
 }
 
 void Order::display()
