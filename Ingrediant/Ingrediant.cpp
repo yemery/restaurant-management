@@ -16,15 +16,15 @@ int Ingrediant::getQuantity()
     return quantity;
 }
 
-// une methode pour afficher les infromations de l'ingrediant
-void Ingrediant::display()
-{
-    item->display();
-    cout << "Quantity: " << quantity << endl;
-}
 
 // une getter pour accéder à l'ID de l'item qui est privé qui utilise la méthode getter de la classe Item
 int Ingrediant::getItemId()
 {
     return item->getId();
+}
+// une methode pour afficher les infromations de l'ingrediant
+void Ingrediant::display()
+{
+    item->display();
+    cout << "Quantity: " << quantity << endl;
 }

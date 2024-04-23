@@ -2,7 +2,9 @@
 
 void OrderMenu(Menu &m,Inventory &i)
 {
-    // un menu pour gérer les commandes (ajouter une commande, afficher les commandes, calculer le total des commandes, calculer le total par ID de commande, lister les commandes d'un client)
+    // un menu pour gérer les commandes (ajouter une commande,
+    //  afficher les commandes, calculer le total des commandes, 
+    //  calculer le total par ID de commande, lister les commandes d'un client
     
     int choice;
     bool exit = false;

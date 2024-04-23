@@ -1,6 +1,6 @@
 # Restaurant Management System
 
-This repository contains a simple restaurant management system implemented in C++. The system allows for managing clients, menus, reservations, and orders.
+This repository contains a simple restaurant management system implemented in C++. The system allows for managing Client, Dish, Drink, Inventory, Item, Menu, Order, and Reservation...
 
 ## Features
 
@@ -8,6 +8,8 @@ This repository contains a simple restaurant management system implemented in C+
 - **Menu Management**: Add items to the menu and display the menu.
 - **Reservation Management**: Reserve tables, display reservations, confirm reservations, and cancel reservations.
 - **Order Management**: Add orders, display orders, calculate sum per order, and get reservations by client ID.
+
+
 
 ## Getting Started
 

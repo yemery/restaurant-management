@@ -6,11 +6,15 @@
 
 int main()
 {
-    // un menu principal pour gérer les différentes fonctionnalités du restaurant, chaque fonctionnalité est gérée par un menu spécifique (client, menu, réservation, commande, inventaire)
+//  un menu principal pour gérer les différentes fonctionnalités du restaurant, 
+//     chaque fonctionnalité est gérée par un menu spécifique
+//      (client, menu, réservation, commande, inventaire)
     int choice;
     bool exit = false;
 
-    // les objets des classes Menu et Inventory pour gérer les menus et l'inventaire , on les a déclaré ici pour qu'ils soient accessibles dans tous les menus pour les gérer et les modifier sans avoir à les initialiser à chaque fois
+    //  les objets des classes Menu et Inventory pour gérer les menus et l'inventaire , 
+    // on les a déclaré ici pour qu'ils soient accessibles dans tous les menus pour les gérer et
+    //  les modifier sans avoir à les initialiser à chaque fois
     Menu m;
     Inventory i;
     do

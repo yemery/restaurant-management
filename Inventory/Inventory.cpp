@@ -39,10 +39,13 @@ void Inventory::updateItems()
             cout << "Enter the quantity of the item: (use + to add and - to subtract): ";
             cin >> quantity;
             // si la quantité est négative on utilise la valeur absolue de la quantité pour la comparer avec la quantité de l'item dans l'inventaire, la quantité ne peut pas être négative
-            if (i->getQuantity() < abs(quantity))
+
+            if (quantity < 0)
             {
-                // si la quantité est supérieure à la quantité de l'item dans l'inventaire on affiche un message d'erreur
-                cout << "Quantity cannot be negative!" << endl;
+                if (abs(quantity) > i->getQuantity())
+                {
+                    cout << "The quantity of the item in the inventory is less than the quantity you want to subtract!" << endl;
+                }
             }
             else
             {
